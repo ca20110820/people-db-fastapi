@@ -1,5 +1,6 @@
 from typing import Any, Optional, Union
 from dataclasses import dataclass
+from pydantic import BaseModel
 import json
 import hashlib
 import base64
@@ -12,7 +13,7 @@ def _generate_short_uid(obj):
     return short_uid
 
 
-@dataclass(slots=True, init=False)
+@dataclass
 class Person:
     person_id: str
     name: str
@@ -64,13 +65,13 @@ class Person:
     @classmethod
     def from_dict(cls, person_dict: dict) -> 'Person':
         instance = cls(
+            person_dict['person_id'],
             person_dict['name'],
             person_dict['dob'],
             person_dict['occupation'],
             person_dict['height']
         )
-        # Assumed to have person_id
-        instance.person_id = person_dict['person_id']
+        
         return instance
 
     def to_dict(self) -> dict:
