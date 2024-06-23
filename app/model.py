@@ -36,7 +36,7 @@ class Person:
 
     def __str__(self) -> str:
         return self.to_json_str(indent=4)
-    
+
     @classmethod
     def create_with_uid(cls,
                         name: str,
@@ -50,7 +50,7 @@ class Person:
             occupation,
             height
         )
-        
+
         instance = cls(
             _generate_short_uid(obj),
             name,
@@ -58,7 +58,7 @@ class Person:
             occupation,
             height
         )
-        
+
         return instance
 
     @classmethod
@@ -89,8 +89,3 @@ class Person:
 
     def to_json_str(self, *args, **kwargs) -> str:
         return json.dumps(self.to_dict(), *args, **kwargs)
-
-# person = Person.create_with_uid("NoName", "1999-09-01", "Programmer", 170)
-# person_json_str = person.to_json_str()
-# recreate_person = Person.from_json_str(person_json_str)
-# print(recreate_person)
