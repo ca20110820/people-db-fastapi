@@ -13,6 +13,8 @@
     # Make sure that you have "<project-root>/data/people.json"
     $ docker run --rm -t --name person-api-container -p 127.0.0.1:8000:8000 -v //$(pwd)/data/people.json:/app/data/people.json person-api
     ```
+- View the API Docs in `http://127.0.0.1:8000/docs`
+
 
 ## Operations (CRUD of HTTP Requests)
 
